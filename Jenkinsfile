@@ -10,7 +10,8 @@ pipeline{
    stages{
       stage("build stage"){
         steps {
-            sh 'mvn clean deploy'
+            sh 'mvn clean deploy -DargLine="-Xmx2048m"
+'
         }
       }
    }
