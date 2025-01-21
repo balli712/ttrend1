@@ -1,18 +1,20 @@
-pipeline{
-    agent{
-      node{
-           label 'maven-nodes'
+pipeline {
+    agent {
+        node
+           {
+             label 'maven-nodes'
+           }
     }
-  }
-  environment  {
-        PATH = "/opt/apache-maven-3.9.9/bin:$PATH"
-  }
-   stages{
-      stage("build stage"){
-        steps {
-            sh 'mvn clean deploy -DargLine="-Xmx2048m"'
-'
+environment {
+    PATH = "/opt/apache-maven-3.9.9/bin:$PATH"
+            }
+    stages {
+         stage("build"){
+            steps {
+                 echo "----------- build started ----------"
+                sh 'mvn clean deploy'
+                 echo "----------- build complted ----------"
+            }
         }
-      }
-   }
+  }
 }
